@@ -214,15 +214,15 @@ def DGP_solver(normal, mask, h_value=1, iters=5, eps=0.0871557, solver='Cholesky
         ############## Step 1. local shaping #############
         # get projected vertex according to equ.(2) in the paper. Here have two projection method, the latter one is from the paper 
         # and the former one is a substituable and effective.
-        # projection_bottom_left = depth - (-0.5*nx*h_value - 0.5*ny*h_value) / nz
-        # projection_bottom_right = depth - (0.5*nx*h_value - 0.5*ny*h_value) / nz
-        # projection_top_right = depth - (0.5*nx*h_value + 0.5*ny*h_value) / nz
-        # projection_top_left = depth - (-0.5*nx*h_value + 0.5*ny*h_value) / nz
+        projection_bottom_left = depth - (-0.5*nx*h_value - 0.5*ny*h_value) / nz
+        projection_bottom_right = depth - (0.5*nx*h_value - 0.5*ny*h_value) / nz
+        projection_top_right = depth - (0.5*nx*h_value + 0.5*ny*h_value) / nz
+        projection_top_left = depth - (-0.5*nx*h_value + 0.5*ny*h_value) / nz
 
-        projection_bottom_left = depth
-        projection_bottom_right = depth - nx*h_value / nz
-        projection_top_right = depth - (nx*h_value + ny*h_value) / nz
-        projection_top_left = depth - ny*h_value / nz
+        # projection_bottom_left = depth
+        # projection_bottom_right = depth - nx*h_value / nz
+        # projection_top_right = depth - (nx*h_value + ny*h_value) / nz
+        # projection_top_left = depth - ny*h_value / nz
 
         ############# Step 2. global blending ############
         projection = np.array([
